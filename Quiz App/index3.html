@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCQ Test</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+#quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#options {
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+   
+a{
+    background-color: blue;
+    color: white;
+}
+</style>
+<body>
+
+
+
+<div class="container">
+    <h2>Student Information</h2>
+    <form action="#" method="POST">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="roll">Roll:</label>
+            <input type="text" id="roll" name="roll" required>
+        </div>
+        <div class="form-group">
+            <label for="roll">Batch:</label>
+            <input type="text" id="roll" name="roll" required>
+        </div>
+        <div class="form-group">
+            <label for="roll">Section:</label>
+            <input type="text" id="roll" name="roll" required>
+        </div>
+        <li><a href="#HOME">submit</a></li>
+     <!-- <button>Submit</button> -->
+        <!-- <center><div class="btn"><a href="file:///C:/Users/dell/Desktop/new/index.html">Submit</a></div></center> -->
+    </form>
+</div>            
+<script src="script.js"></script>
+
+
+
+
+
+
+<section id="HOME">
+  <div id="quiz-container">
+    <h1>Multiple Choice Quiz</h1>
+    <div id="question"></div>
+    <div id="options"></div>
+    <!-- <button id="submit-btn">Submit</button> -->
+    <div id="result"></div>
+  </div>
+</section>
+  
+
+
+</body>
+<script>
+    const questions = [
+  {
+    question: "What is the capital of France?",
+    options: ["Paris", "London", "Berlin", "Rome"],
+    correctAnswer: "Paris"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    correctAnswer: "Mars"
+  },
+  {
+    question: "What is the capital of France?",
+    options: ["Paris", "London", "Berlin", "Rome"],
+    correctAnswer: "Paris"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    correctAnswer: "Mars"
+  },
+  {
+    question: "What is the capital of France?",
+    options: ["Paris", "London", "Berlin", "Rome"],
+    correctAnswer: "Paris"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    correctAnswer: "Mars"
+  },
+  {
+    question: "What is the capital of France?",
+    options: ["Paris", "London", "Berlin", "Rome"],
+    correctAnswer: "Paris"
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Mercury"],
+    correctAnswer: "Mars"
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const optionsElement = document.getElementById("options");
+const submitBtn = document.getElementById("submit-btn");
+const resultElement = document.getElementById("result");
+
+function loadQuestion() {
+  const currentQ = questions[currentQuestion];
+  questionElement.textContent = currentQ.question;
+  optionsElement.innerHTML = "";
+  currentQ.options.forEach((option, index) => {
+    const optionBtn = document.createElement("button");
+    optionBtn.textContent = option;
+    optionBtn.addEventListener("click", () => {
+      checkAnswer(option);
+    });
+    optionsElement.appendChild(optionBtn);
+  });
+}
+
+function checkAnswer(selectedOption) {
+  const currentQ = questions[currentQuestion];
+  if (selectedOption === currentQ.correctAnswer) {
+    score++;
+  }
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  questionElement.textContent = "";
+  optionsElement.innerHTML = "";
+  resultElement.textContent = `Your Score: ${score}/${questions.length}`;
+  submitBtn.style.display = "none";
+}
+
+loadQuestion();
+
+
+
+
+
+
+
+var answers = ["A", "C", "B"],
+    tot = answers.length;
+function getCheckedValue(radioName) {
+    var radios = document.getElementsByName(radioName);
+    for (var y = 0; y < radios.length; y++)
+        if (radios[y].checked) return radios[y].value;
+}
+function getScore() {
+    var score = 0;
+    for (var i = 0; i < tot; i++)
+        if (getCheckedValue("question" + i) === answers[i]) score += 1;
+    return score;
+}
+function returnScore() {
+    document.getElementById("myresults").innerHTML =
+        "Your score is " + getScore() + "/" + tot;
+    if (getScore() > 2) {
+        console.log("Bravo");
+    }
+}
+
+</script>
+</html>
+</body>
